@@ -20,6 +20,17 @@ PODS:
   - Mantle/extobjc (1.3.1)
   - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.12)
+  - UMengUShare/Core (6.1):
+    - UMengUShare/Network
+  - UMengUShare/Network (6.1)
+  - UMengUShare/Social/QQ (6.1):
+    - UMengUShare/Core
+  - UMengUShare/Social/Sina (6.1):
+    - UMengUShare/Core
+  - UMengUShare/Social/WeChat (6.1):
+    - UMengUShare/Core
+  - UMengUShare/UI (6.1):
+    - UMengUShare/Core
 
 DEPENDENCIES:
   - AFNetworking
@@ -27,6 +38,10 @@ DEPENDENCIES:
   - Mantle (~> 1.3.1)
   - MBProgressHUD (~> 1.0.0)
   - MJRefresh
+  - UMengUShare/Social/QQ
+  - UMengUShare/Social/Sina
+  - UMengUShare/Social/WeChat
+  - UMengUShare/UI
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -34,7 +49,8 @@ SPEC CHECKSUMS:
   Mantle: a516570b84c3cefb34b02647a6588a087dddc490
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  UMengUShare: 6c3902a68a06d01031bed6f426e97b89d4fc504f
 
-PODFILE CHECKSUM: c7ce394fb5a94d15d01390d0c48342cd2bfd049a
+PODFILE CHECKSUM: a362840b04923e5023854f247d820169b9666ebd
 
 COCOAPODS: 1.1.0.beta.2

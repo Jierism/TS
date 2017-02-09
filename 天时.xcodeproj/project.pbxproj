@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		371DC07A1E30716C00447BCB /* TSImageShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 371DC0791E30716C00447BCB /* TSImageShareViewController.m */; };
+		371DC0861E33396300447BCB /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 371DC0851E33396300447BCB /* libsqlite3.tbd */; };
+		371DC0881E3339AB00447BCB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 371DC0871E3339AB00447BCB /* CoreGraphics.framework */; };
+		371DC08B1E3AF49E00447BCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 371DC0891E3AF49E00447BCB /* LaunchScreen.storyboard */; };
 		3734F0CA1D8ECE0C00483959 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3734F0C91D8ECE0C00483959 /* main.m */; };
-		3734F0D31D8ECE0C00483959 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3734F0D11D8ECE0C00483959 /* Main.storyboard */; };
 		3734F0D51D8ECE0C00483959 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3734F0D41D8ECE0C00483959 /* Assets.xcassets */; };
-		3734F0D81D8ECE0C00483959 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3734F0D61D8ECE0C00483959 /* LaunchScreen.storyboard */; };
 		3734F0E31D8ECE0C00483959 /* __Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3734F0E21D8ECE0C00483959 /* __Tests.m */; };
 		3734F0EE1D8ECE0C00483959 /* __UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3734F0ED1D8ECE0C00483959 /* __UITests.m */; };
 		3793D5EB1DB08149002B5DC6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3793D5EA1DB08149002B5DC6 /* SystemConfiguration.framework */; };
@@ -57,11 +59,14 @@
 
 /* Begin PBXFileReference section */
 		3450A290375062465BD15B63 /* Pods-天时.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-天时.release.xcconfig"; path = "Pods/Target Support Files/Pods-天时/Pods-天时.release.xcconfig"; sourceTree = "<group>"; };
+		371DC0781E30716C00447BCB /* TSImageShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSImageShareViewController.h; sourceTree = "<group>"; };
+		371DC0791E30716C00447BCB /* TSImageShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSImageShareViewController.m; sourceTree = "<group>"; };
+		371DC0851E33396300447BCB /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		371DC0871E3339AB00447BCB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		371DC08A1E3AF49E00447BCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3734F0C51D8ECE0C00483959 /* 天时.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "天时.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3734F0C91D8ECE0C00483959 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3734F0D21D8ECE0C00483959 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3734F0D41D8ECE0C00483959 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		3734F0D71D8ECE0C00483959 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3734F0D91D8ECE0C00483959 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3734F0DE1D8ECE0C00483959 /* 天时Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "天时Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3734F0E21D8ECE0C00483959 /* __Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = __Tests.m; sourceTree = "<group>"; };
@@ -71,8 +76,6 @@
 		3734F0EF1D8ECE0C00483959 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3793D5EA1DB08149002B5DC6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		3793D5EC1DB394BD002B5DC6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		37EBBFCE1DC43B2700CC92CD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
-		37EBBFCF1DC43B2700CC92CD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		37EBBFE21DDAB52300CC92CD /* SearchBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBarViewController.h; sourceTree = "<group>"; };
 		37EBBFE31DDAB52300CC92CD /* SearchBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBarViewController.m; sourceTree = "<group>"; };
 		37EBBFE41DDAB52300CC92CD /* TSMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMainViewController.h; sourceTree = "<group>"; };
@@ -118,6 +121,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				371DC0881E3339AB00447BCB /* CoreGraphics.framework in Frameworks */,
+				371DC0861E33396300447BCB /* libsqlite3.tbd in Frameworks */,
 				3793D5ED1DB394BD002B5DC6 /* CoreData.framework in Frameworks */,
 				3793D5EB1DB08149002B5DC6 /* SystemConfiguration.framework in Frameworks */,
 				BD9F817E696FF529677FF9E8 /* libPods-天时.a in Frameworks */,
@@ -167,9 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				37EBBFE01DDAB52300CC92CD /* Classes */,
-				3734F0D11D8ECE0C00483959 /* Main.storyboard */,
 				3734F0D41D8ECE0C00483959 /* Assets.xcassets */,
-				3734F0D61D8ECE0C00483959 /* LaunchScreen.storyboard */,
 				3734F0D91D8ECE0C00483959 /* Info.plist */,
 				3734F0C81D8ECE0C00483959 /* Supporting Files */,
 			);
@@ -179,6 +182,7 @@
 		3734F0C81D8ECE0C00483959 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				371DC0891E3AF49E00447BCB /* LaunchScreen.storyboard */,
 				3734F0C91D8ECE0C00483959 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -218,6 +222,8 @@
 		37EBBFE11DDAB52300CC92CD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				371DC0781E30716C00447BCB /* TSImageShareViewController.h */,
+				371DC0791E30716C00447BCB /* TSImageShareViewController.m */,
 				37EBBFE21DDAB52300CC92CD /* SearchBarViewController.h */,
 				37EBBFE31DDAB52300CC92CD /* SearchBarViewController.m */,
 				37EBBFE41DDAB52300CC92CD /* TSMainViewController.h */,
@@ -305,6 +311,8 @@
 		7FAD0B6737BFBD2675A347E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				371DC0871E3339AB00447BCB /* CoreGraphics.framework */,
+				371DC0851E33396300447BCB /* libsqlite3.tbd */,
 				3793D5EC1DB394BD002B5DC6 /* CoreData.framework */,
 				3793D5EA1DB08149002B5DC6 /* SystemConfiguration.framework */,
 				DAAD0BA342DD4A044E6B78C4 /* libPods-天时.a */,
@@ -421,13 +429,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3734F0D81D8ECE0C00483959 /* LaunchScreen.storyboard in Resources */,
 				37EBC01F1DDAB52300CC92CD /* SuggestionCell.xib in Resources */,
 				3734F0D51D8ECE0C00483959 /* Assets.xcassets in Resources */,
 				37EBC01B1DDAB52300CC92CD /* ConditionCell.xib in Resources */,
+				371DC08B1E3AF49E00447BCB /* LaunchScreen.storyboard in Resources */,
 				37EBC0161DDAB52300CC92CD /* KaiTi_GB2312.ttf in Resources */,
 				37EBC01D1DDAB52300CC92CD /* DailyForcastCell.xib in Resources */,
-				3734F0D31D8ECE0C00483959 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,6 +516,7 @@
 				37EBC00C1DDAB52300CC92CD /* SearchBarViewController.m in Sources */,
 				37EBC0171DDAB52300CC92CD /* CheckNetworkStatus.m in Sources */,
 				37EBC0141DDAB52300CC92CD /* TSLifeSuggestion.m in Sources */,
+				371DC07A1E30716C00447BCB /* TSImageShareViewController.m in Sources */,
 				37EBC0191DDAB52300CC92CD /* UIImage+logo.m in Sources */,
 				37EBC00D1DDAB52300CC92CD /* TSMainViewController.m in Sources */,
 				37EBC00E1DDAB52300CC92CD /* ViewController.m in Sources */,
@@ -552,20 +560,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		3734F0D11D8ECE0C00483959 /* Main.storyboard */ = {
+		371DC0891E3AF49E00447BCB /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				3734F0D21D8ECE0C00483959 /* Base */,
-				37EBBFCE1DC43B2700CC92CD /* zh-Hans */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		3734F0D61D8ECE0C00483959 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3734F0D71D8ECE0C00483959 /* Base */,
-				37EBBFCF1DC43B2700CC92CD /* zh-Hans */,
+				371DC08A1E3AF49E00447BCB /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

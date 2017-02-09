@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "TSMainViewController.h"
 #import <CoreData/CoreData.h>
+#import <UMSocialCore/UMSocialCore.h>
 NSString * const ManagedObjectContextSaveDidFailNotification =  @"ManagedObjectContextSaveDidFailNotification";
 
 @interface AppDelegate ()<UIAlertViewDelegate>
@@ -23,18 +24,57 @@ NSString * const ManagedObjectContextSaveDidFailNotification =  @"ManagedObjectC
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
+    
+    /**
+        设置友盟组件
+     */
+    //打开调试日志
+//    [[UMSocialManager defaultManager] openLog:YES];
+    
+    //设置友盟appkey
+    [[UMSocialManager defaultManager] setUmSocialAppkey:@"58808cad75ca35080f000240"];
+    [self configUSharePlatforms];
+    /*===================================================================================*/
     // 把状态栏的颜色设置为白色
     application.statusBarStyle = UIStatusBarStyleLightContent;
     
-    self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    // 设置主页面
     TSMainViewController *mainVC = [[TSMainViewController alloc]init];
     // 把数据库的内容传到TSMainViewController中
     mainVC.managedObjectContext = self.managedObjectContext;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fatalCoreDataError:) name:ManagedObjectContextSaveDidFailNotification object:nil];
-
     self.window.rootViewController = mainVC;
+    [self.window makeKeyAndVisible];
     return YES;
+}
+
+/**
+    调用平台
+ */
+- (void)configUSharePlatforms
+{
+    /* 设置微信的appKey和appSecret */
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wx17bad5b66bcda048" appSecret:@"f82edc98d430ee3941b732c7deeee940" redirectURL:nil];
+    
+    /* 设置分享到QQ互联的appID
+     * U-Share SDK为了兼容大部分平台命名，统一用appKey和appSecret进行参数设置，而QQ平台仅需将appID作为U-Share的appKey参数传进即可。
+     */
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"1105886587" appSecret:nil redirectURL:nil];
+    
+    /* 设置新浪的appKey和appSecret */
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"2153883818"  appSecret:@"e870c59455fa036dc8788b3808e8eb32" redirectURL:nil];
+}
+
+// 友盟系统回调
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];
+    if (!result) {
+        // 其他如支付等SDK的回调
+    }
+    return result;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "EC43EC17802B279D318C518F39E1E5470750ECAE",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "E5DD7FFB748DC3380987F3EDA38C865AB3A7D33C" : 9223372036854775807,
+    "EC43EC17802B279D318C518F39E1E5470750ECAE" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "1B355F20-88DD-4740-BADE-10C3B170CB16",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "E5DD7FFB748DC3380987F3EDA38C865AB3A7D33C" : "",
+    "EC43EC17802B279D318C518F39E1E5470750ECAE" : "%E5%A4%A9%E6%97%B6\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "天时",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "天时.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Jierism\/MyWeatherforecastApp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E5DD7FFB748DC3380987F3EDA38C865AB3A7D33C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Jierism\/TS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EC43EC17802B279D318C518F39E1E5470750ECAE"
+    }
+  ]
+}

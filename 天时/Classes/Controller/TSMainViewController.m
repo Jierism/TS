@@ -9,6 +9,7 @@
 #import "TSMainViewController.h"
 #import "ViewController.h"
 #import "SearchBarViewController.h"
+#import "TSImageShareViewController.h"
 #import "MBProgressHUD.h"
 #import "LLSlideMenu.h"
 #import "Citys.h"
@@ -17,10 +18,11 @@
 #import "Reachability.h"
 #import "UIImage+logo.h"
 
+
 #define Kwidth 170 //侧栏宽度
 
 
-@interface TSMainViewController ()<UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate>
+@interface TSMainViewController ()<UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UIAlertViewDelegate>
 
 // 侧栏
 @property (nonatomic,strong) LLSlideMenu *slideMenu;
@@ -38,6 +40,8 @@
 @property (nonatomic,strong) NSMutableArray *allObjects;            // 存放数据记录的数组
 @property (nonatomic,assign) BOOL cityIsUse;                            // 城市是否可用标记
 @property (nonatomic,strong) UISwitch *refashSwitch;
+
+@property (nonatomic,strong) UIImage *tsImage;                     // 存储加上水印的图片
 
 @end
 
@@ -89,18 +93,6 @@
                                              selector:@selector(applicationDidEnterBackground)
                                                  name:UIApplicationDidEnterBackgroundNotification
                                                object:nil];
-}
-
-// alertView的协议方法
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (![CheckNetworkStatus networkStatus]) {
-            abort();
-    }else{
-        // 关闭侧栏
-        [_slideMenu ll_closeSlideMenu];
-  
-    }
 }
 
 
@@ -181,8 +173,8 @@
         _slideMenu.ll_menuBackgroundColor = [UIColor darkGrayColor];
         // 设置弹力和速度，  默认的是20,15,60
         _slideMenu.ll_springDamping = 20;       // 阻力
-        _slideMenu.ll_springVelocity = 15;      // 速度
-        _slideMenu.ll_springFramesNum = 60;     // 关键帧数量
+        _slideMenu.ll_springVelocity = 100;      // 速度
+        _slideMenu.ll_springFramesNum = 50;     // 关键帧数量
         
         // 侧栏标题
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, Kwidth, 44)];
@@ -602,12 +594,11 @@
 {
     _image = info[UIImagePickerControllerEditedImage];
     //画出水印图片
-    UIImage *newImg = [UIImage imageWithImage:_image andViewController:self.viewControllerArr[self.pageControl.currentPage]];
-    UIImageWriteToSavedPhotosAlbum(newImg, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+    self.tsImage = [UIImage imageWithImage:_image andViewController:self.viewControllerArr[self.pageControl.currentPage]];
+    UIImageWriteToSavedPhotosAlbum(self.tsImage, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
     // 把图片输出到桌面，用于调试
 //    NSData *data = UIImagePNGRepresentation(newImg);
 //    [data writeToFile:@"/Users/jierism/Desktop/newImg.png" atomically:YES];
-    
     [self dismissViewControllerAnimated:YES completion:nil];
     _imagePicker = nil;
 }
@@ -621,7 +612,7 @@
         msg = @"保存图片成功";
     }
     
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:msg message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"确认", nil) otherButtonTitles:nil, nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:msg message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"确认", nil) otherButtonTitles:@"查看", nil];
     [alertView show];
 }
 
@@ -642,6 +633,25 @@
     _actionSheet = nil;
 }
 
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (![CheckNetworkStatus networkStatus]) {
+        abort();
+    }else if(buttonIndex == 0){
+        // 关闭侧栏
+        [_slideMenu ll_closeSlideMenu];
+    }else if(buttonIndex == 1) {
+        [_slideMenu ll_closeSlideMenu];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            TSImageShareViewController *imageShareVC = [[TSImageShareViewController alloc] init];
+            imageShareVC.image = self.tsImage;
+            [self presentViewController:imageShareVC animated:YES completion:nil];
+        });
+        
+        
+    }
+}
 
 - (void)dealloc
 {

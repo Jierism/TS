@@ -22,6 +22,8 @@
 // 第三方HUD
 #import "MBProgressHUD.h"
 
+#define TSBGCOLOR(r,g,b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
+
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @end
@@ -53,19 +55,19 @@
 
 - (void)configureDatawithcity: (NSString *)cityName{
     NSString *httpUrl = [NSString stringWithFormat:@"https://free-api.heweather.com/v5/weather?city=%@&key=7fcf60e8809f4c96a66ee7d1bb3c6fc0",[cityName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-
+    NSError *error;
     //加载一个NSURL对象
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:httpUrl]];
     //将请求的url数据放到NSData对象中
     NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     
     //IOS5自带解析类NSJSONSerialization从response中解析出数据放到字典中
-    NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:nil];
+    NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
     NSArray *jsonArr = [jsonDict objectForKey:@"HeWeather5"];
     NSDictionary *jsonDictionary = [jsonArr objectAtIndex:0];
+    //NSLog(@"%@",jsonDictionary);
     self.jsonDic = jsonDictionary;
     [self setAllData];
-    
 }
 
 // 判断城市是否可用
@@ -133,38 +135,38 @@
 // 主页天气
 - (void)setWeatherCondition
 {
-    _conditon = [[NSMutableArray alloc] init];
+    self.conditon = [NSMutableArray array];
     TSCondition *dic = [MTLJSONAdapter modelOfClass:[TSCondition class] fromJSONDictionary:self.jsonDic error:nil];
     self.cityLabel.text = dic.cityName;
-    [_conditon addObject:dic];
+    [self.conditon addObject:dic];
     
     // 根据天气改变背景颜色
     if ([dic.nowCond isEqualToString:@"晴"]) {
-        self.view.backgroundColor = [UIColor colorWithRed:255/255.0 green:80/255.0 blue:100/255.0 alpha:1];
+        self.view.backgroundColor = TSBGCOLOR(255, 80, 100);
     }else if ([dic.nowCond isEqualToString:@"多云"]){
-        self.view.backgroundColor = [UIColor colorWithRed:0/255.0 green:92/255.0 blue:130/255.0 alpha:1];
+        self.view.backgroundColor = TSBGCOLOR(0, 92, 130);
     }else if ([dic.nowCond isEqualToString:@"晴间多云"]){
-        self.view.backgroundColor = [UIColor colorWithRed:0/255.0 green:128/255.0 blue:255/255.0 alpha:1];
+        self.view.backgroundColor = TSBGCOLOR(0, 128, 255);
     }else if ([dic.nowCond isEqualToString:@"阴"] || [dic.nowCond isEqualToString:@"雾霾"] || [dic.nowCond isEqualToString:@"霾"]  || [dic.nowCond isEqualToString:@"雾"]){
         self.view.backgroundColor = [UIColor grayColor];
     }else if ([dic.nowCond isEqualToString:@"小雪"] || [dic.nowCond isEqualToString:@"阵雪"]){
-        self.view.backgroundColor = [UIColor colorWithRed:0/255.0 green:164/255.0 blue:164/255.0 alpha:1];
+        self.view.backgroundColor = TSBGCOLOR(0, 164, 164);
     }else if ([dic.nowCond isEqualToString:@"阴转晴"]){
-        self.view.backgroundColor = [UIColor colorWithRed:0/255.0 green:115/255.0 blue:228/255.0 alpha:1];
+        self.view.backgroundColor = TSBGCOLOR(0, 115, 228);
     }else if([dic.nowCond isEqualToString:@"小雨"] || [dic.nowCond isEqualToString:@"阵雨"]){
-        self.view.backgroundColor = [UIColor colorWithRed:0/255.0 green:80/255.0 blue:255/255.0 alpha:1];
+        self.view.backgroundColor = TSBGCOLOR(0, 80, 255);
     }else if ([dic.nowCond isEqualToString:@"大雨"] || [dic.nowCond isEqualToString:@"中雨"]){
-        self.view.backgroundColor = [UIColor colorWithRed:0/255.0 green:30/255.0 blue:180/255.0 alpha:1];
+        self.view.backgroundColor = TSBGCOLOR(0, 30, 180);
     }else if([dic.nowCond isEqualToString:@"雨转晴"]){
-        self.view.backgroundColor = [UIColor colorWithRed:255/255.0 green:70/255.0 blue:255/255.0 alpha:1];
+        self.view.backgroundColor = TSBGCOLOR(255, 70, 255);
     }else if([dic.nowCond isEqualToString:@"雷阵雨"]){
-        self.view.backgroundColor = [UIColor colorWithRed:0/255.0 green:40/255.0 blue:120/255.0 alpha:1];
+        self.view.backgroundColor = TSBGCOLOR(0, 40, 129);
     }else if ([dic.nowCond isEqualToString:@"暴雨"]){
-        self.view.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:175/255.0 alpha:1];
+        self.view.backgroundColor = TSBGCOLOR(0, 0, 175);
     }else if ([dic.nowCond isEqualToString:@"雨夹雪"]){
-        self.view.backgroundColor = [UIColor colorWithRed:0/255.0 green:70/255.0 blue:70/255.0 alpha:1];
+        self.view.backgroundColor = TSBGCOLOR(0, 70, 70);
     }else if ([dic.nowCond isEqualToString:@"冰雹"]){
-        self.view.backgroundColor = [UIColor colorWithRed:0/255.0 green:125/255.0 blue:140/255.0 alpha:1];
+        self.view.backgroundColor = TSBGCOLOR(0, 125, 140);
     }
     
     
@@ -177,13 +179,13 @@
 {
 
     NSArray *daily = [self.jsonDic objectForKey:@"daily_forecast"];
-    _dailyFc = [[NSMutableArray alloc] init];
+    self.dailyFc = [NSMutableArray array];
     TSDailyForecast *dic = [[TSDailyForecast alloc]init];
     for (int i = 0; i < [daily count]; i++) {
         NSDictionary *dailyDic = [daily objectAtIndex:i];
         dic = [MTLJSONAdapter modelOfClass:[TSDailyForecast class] fromJSONDictionary:dailyDic error:nil];
         
-        [_dailyFc addObject:dic];
+        [self.dailyFc addObject:dic];
     
     }
 
@@ -193,7 +195,7 @@
 // 生活指数
 - (void)getLifeSuggestion
 {
-    _lifeSuggestion = [[NSMutableArray alloc] init];
+    self.lifeSuggestion = [NSMutableArray array];
     NSDictionary *suggestion = [self.jsonDic objectForKey:@"suggestion"];
     // 根据字典里的key遍历，并取出使用
     
@@ -207,7 +209,7 @@
         TSLifeSuggestion *ls = [MTLJSONAdapter modelOfClass:[TSLifeSuggestion class] fromJSONDictionary:sugDic error:nil];
         // 除了@“comf”，其他数据都加到数组里面
         if (![ls.sutitle  isEqual: @"comf"] && ![ls.sutitle isEqualToString:@"air"]) {
-            [_lifeSuggestion addObject:ls];
+            [self.lifeSuggestion addObject:ls];
         }
         
     }];
@@ -225,11 +227,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return [_conditon count];
+        return [self.conditon count];
     }else if(section == 1){
-        return [_dailyFc count];
+        return [self.dailyFc count];
     }else{
-        return [_lifeSuggestion count];
+        return [self.lifeSuggestion count];
     }
 }
 
@@ -237,17 +239,17 @@
 {
     if (indexPath.section == 0) {
         ConditionCell *conditionCell = [ConditionCell ConditionCellWithTableView:tableView];
-        conditionCell.condition = _conditon[indexPath.row];
+        conditionCell.condition = self.conditon[indexPath.row];
         return conditionCell;
     }else if (indexPath.section == 1) {
         
         DailyForcastCell *dailyCell = [DailyForcastCell DailyForecastCellWithTableView:tableView];
-        dailyCell.dailyForecast = _dailyFc[indexPath.row];
+        dailyCell.dailyForecast = self.dailyFc[indexPath.row];
         return dailyCell;
     }else{
 
         SuggestionCell *suggestionCell = [SuggestionCell SuggestionCellWithTableView:tableView];
-        suggestionCell.lifeSuggestion = _lifeSuggestion[indexPath.row];
+        suggestionCell.lifeSuggestion = self.lifeSuggestion[indexPath.row];
         return suggestionCell;
     }
     

@@ -10,4 +10,6 @@
 
 @interface TSImageShareViewController : UIViewController
 
+@property (nonatomic,strong) UIImage *image;
+
 @end

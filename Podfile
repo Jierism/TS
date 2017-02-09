@@ -5,5 +5,9 @@ pod 'MBProgressHUD','~> 1.0.0'
 pod 'LLSlideMenu'
 pod 'MJRefresh'
 pod 'AFNetworking'
+pod 'UMengUShare/UI'
+pod 'UMengUShare/Social/Sina'
+pod 'UMengUShare/Social/WeChat'
+pod 'UMengUShare/Social/QQ'
 end
 
