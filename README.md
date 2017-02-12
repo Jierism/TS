@@ -7,4 +7,6 @@
 4.实现给图片添加水印功能并集成友盟实现图片分享功能<br>
 5.使用CoreData保存城市信息，实现数据存储<br>
 6.使用Mantle、MJRefresh、MBProgressHUD等第三方框架<br>
-[点击这里我你可以链接到我的博客](http://www.cnblogs.com/jierism/p/5903735.html)<br />
+[点击这里我你可以链接到我的博客](http://www.cnblogs.com/jierism/p/5903735.html)<br>
+下面是应用的截图：<br>
+![image](https://github.com/Jierism/TS/ScreenShot/截图1.png
