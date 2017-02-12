@@ -9,4 +9,9 @@
 6.使用Mantle、MJRefresh、MBProgressHUD等第三方框架<br>
 [点击这里我你可以链接到我的博客](http://www.cnblogs.com/jierism/p/5903735.html)<br>
 下面是应用的截图：<br>
-![image](https://github.com/Jierism/TS/ScreenShot/截图1.png)
+![image](https://github.com/Jierism/TS/ScreenShot/截图1.png)<br>
+![image](https://github.com/Jierism/TS/ScreenShot/截图2.png)<br>
+![image](https://github.com/Jierism/TS/ScreenShot/截图3.png)<br>
+![image](https://github.com/Jierism/TS/ScreenShot/截图4.png)<br>
+![image](https://github.com/Jierism/TS/ScreenShot/截图5.png)<br>
+![image](https://github.com/Jierism/TS/ScreenShot/搜索栏.png)<br>
